@@ -1,0 +1,7 @@
+.cart-container{
+    position: absolute;
+    width: 30%;
+    top: 72px;
+    right: 0;
+    background: white;
+}

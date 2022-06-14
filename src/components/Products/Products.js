@@ -5,12 +5,14 @@ import './Products.css'
 const Products = () => {
     const [products, setProducts] = useProducts();
 
+    const [cart, setCart] = useState([]);
+
+
+
+
     return (
         <div className='products-container'>
-            <h1>{products.length}</h1>
             <div className='products'>
-
-
                 {
                     products.map(product => <SingleProduct
                         key={product.id}
