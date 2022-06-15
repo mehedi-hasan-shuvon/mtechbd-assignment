@@ -6,6 +6,7 @@ import Cart from './components/Cart/Cart';
 import { createContext, useState } from 'react';
 
 
+
 export const CartContext = createContext(false);
 export const CartLengthContext = createContext(0)
 

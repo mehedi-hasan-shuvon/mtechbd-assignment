@@ -2,14 +2,23 @@ import { faCircleXmark, faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext } from 'react';
 import { CartContext, CartLengthContext } from '../../App';
+import useCart from '../../CustomHooks/useCart';
+import useProducts from '../../CustomHooks/useProducts';
 import CartItems from '../CartItems/CartItems';
 import SingleCartItem from '../SingleCartItem/SingleCartItem';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Cart.css';
 
 const Cart = (props) => {
     const [text, setTest] = useContext(CartContext);
 
-    const { cart } = props;
+    const { cart,handelRemoveProduct } = props;
+
+    const handelCheckout=()=>{
+        toast.success("Cart Items has been ordered to Checkout");
+    }
+    
 
     let total = 0;
     let shipping_charge_per_product = 5;
@@ -33,11 +42,11 @@ const Cart = (props) => {
                 </div>
                 <hr />
                 <h3>Your Items {cart.length} and quantity {quantity}</h3>
-                <div>
-                    <p>product will show up here</p>
+                <div className='single-cart-product-container'>
                     {
                         cart.map(product => <SingleCartItem key={product.id}
-                            product={product}></SingleCartItem>)
+                            product={product}
+                            handelRemoveProduct={handelRemoveProduct}></SingleCartItem>)
                     }
                 </div>
                 <hr />
@@ -47,7 +56,14 @@ const Cart = (props) => {
                 </div>
                 <hr />
                 <h3>Grand Total=${grandTotal.toFixed(2)}</h3>
+                <div onClick={handelCheckout} className='proceed-div'>
+                    <button className='proceed-btn'>Proceed to Checkout</button>
+                </div>
+                <div className='clear-div'>
+                    <button className='clear-btn'>Clear Cart</button>
+                </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

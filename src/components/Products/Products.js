@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CartContext, CartLengthContext } from '../../App';
-import { addToDb, getStoredCart } from '../../CustomHooks/fakedb';
+import { addToDb, getStoredCart, removeFromDb } from '../../CustomHooks/fakedb';
 import useProducts from '../../CustomHooks/useProducts';
 import Cart from '../Cart/Cart';
 import SingleProduct from '../SingleProduct/SingleProduct';
@@ -46,6 +46,15 @@ const Products = () => {
         addToDb(product.id)
     }
 
+    const handelRemoveProduct = (product) => {
+        console.log(product);
+        const rest = cart.filter(pd => pd.id !== product.id);
+        setCart(rest);
+        removeFromDb(product.id);
+    };
+
+
+
 
     // console.log(cart);
 
@@ -61,7 +70,7 @@ const Products = () => {
                 }
             </div>
             {
-                text && <Cart cart={cart}></Cart>
+                text && <Cart cart={cart} handelRemoveProduct={handelRemoveProduct}></Cart>
             }
         </div>
     );

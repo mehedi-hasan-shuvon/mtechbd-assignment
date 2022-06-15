@@ -1,0 +1,90 @@
+.single-cart-item {
+    display: flex;
+    align-items: center;
+    /* border: 1px solid black; */
+    border-radius: 10ps;
+    border-radius: 10px;
+    margin: 10px 0px;
+    padding: 5px;
+    background-color: #F9F2ED;
+    box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+    position: relative;
+}
+
+.cart-item-img {
+    width: 10%;
+    /* padding-right: 5%; */
+    /* border: 1px solid black; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* margin: auto; */
+    padding: 8px;
+    border-radius: 7px;
+    background: white;
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+}
+
+.cart-item-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    font-size: 13px;
+    margin: 0px;
+}
+
+.delete-icon{
+    color: red;
+}
+
+.delete-item-badge{
+    position: absolute;
+    bottom: 82px;
+}
+
+.cart-single-item-details{
+    padding-left: 5px;
+    
+}
+
+.cart-item-price{
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.delete-cart-item {
+    display: flex;
+    align-items: center;
+    /* width: 15%; */
+    /* background-color: #FFE0B3; */
+    border-radius: 38%;
+    /* border: none; */
+    position: absolute;
+    left: 0;
+    top: 0%;
+    cursor: pointer;
+}
+
+@media only screen and (max-width:576px) {
+    .cart-item-title {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 100px;
+        font-size: 13px;
+        margin: 0px;
+    }
+
+}
+
+@media only screen and (min-width:577px) and (max-width:992px) {
+    .cart-item-title {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 150px;
+        font-size: 13px;
+        margin: 0px;
+    }
+}

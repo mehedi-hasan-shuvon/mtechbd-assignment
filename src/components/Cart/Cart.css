@@ -20,6 +20,43 @@
     align-items: center;
 }
 
+.proceed-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.proceed-btn{
+    width: 50%;
+    /* padding: 3%; */
+    padding: 10px;
+    background-color: #AEDBCE;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+}
+
+.clear-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clear-btn{
+    width: 50%;
+    padding: 10px;
+    background-color: #FF8C8C;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+}
+
 
 @media only screen and (max-width:576px) {
     .cart-container{
