@@ -9,15 +9,18 @@ import SingleCartItem from '../SingleCartItem/SingleCartItem';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Cart.css';
+import { deleteShoppingCart } from '../../CustomHooks/fakedb';
 
 const Cart = (props) => {
     const [text, setTest] = useContext(CartContext);
 
-    const { cart,handelRemoveProduct } = props;
+    const { cart,handelRemoveProduct,handelClearCart} = props;
 
     const handelCheckout=()=>{
         toast.success("Cart Items has been ordered to Checkout");
     }
+
+   
     
 
     let total = 0;
@@ -59,7 +62,7 @@ const Cart = (props) => {
                 <div onClick={handelCheckout} className='proceed-div'>
                     <button className='proceed-btn'>Proceed to Checkout</button>
                 </div>
-                <div className='clear-div'>
+                <div onClick={handelClearCart} className='clear-div'>
                     <button className='clear-btn'>Clear Cart</button>
                 </div>
             </div>

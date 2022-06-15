@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CartContext, CartLengthContext } from '../../App';
-import { addToDb, getStoredCart, removeFromDb } from '../../CustomHooks/fakedb';
+import { addToDb, deleteShoppingCart, getStoredCart, removeFromDb } from '../../CustomHooks/fakedb';
 import useProducts from '../../CustomHooks/useProducts';
 import Cart from '../Cart/Cart';
 import SingleProduct from '../SingleProduct/SingleProduct';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Products.css'
 const Products = () => {
     const [products, setProducts] = useProducts();
@@ -54,6 +56,12 @@ const Products = () => {
     };
 
 
+ const handelClearCart=()=>{
+        setCart([]);
+        deleteShoppingCart();
+        toast.info("Cart Has been Cleared")
+    }
+
 
 
     // console.log(cart);
@@ -70,7 +78,7 @@ const Products = () => {
                 }
             </div>
             {
-                text && <Cart cart={cart} handelRemoveProduct={handelRemoveProduct}></Cart>
+                text && <Cart cart={cart} handelRemoveProduct={handelRemoveProduct} handelClearCart={handelClearCart}></Cart>
             }
         </div>
     );
