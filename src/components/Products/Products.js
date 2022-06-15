@@ -11,41 +11,48 @@ const Products = () => {
     const [products, setProducts] = useProducts();
     const [cart, setCart] = useState([]);
     const [text, setTest] = useContext(CartContext);
-    const [length,SetLength] = useContext(CartLengthContext);
+    const [length, SetLength] = useContext(CartLengthContext);
+
+
+    //for increament and decrement
+
+
     SetLength(cart.length);
 
     useEffect(() => {
         const storedCart = getStoredCart();
         // console.log(storedCart);
-        const savedCart=[]
+        const savedCart = []
         for (const id in storedCart) {
             const addedProduct = products.find(product => product.id == id);
             if (addedProduct) {
-                            
-                            const quantity = storedCart[id];
-                            addedProduct.quantity = quantity;
-                            savedCart.push(addedProduct);
-                        }
+
+                const quantity = storedCart[id];
+                addedProduct.quantity = quantity;
+                savedCart.push(addedProduct);
+            }
         }
         setCart(savedCart)
     }, [products]);
 
 
-    const handelAddToCart = (product) => {
+    const handelAddToCart = (product, prodcutQuantity) => {
         // console.log("add to cart cliecked", product);
-        let newCart=[];
-        const exists=cart.find(single_product=>single_product.id == product.id);
-        if(!exists){
-            product.quantity=1;
+        let newCart = [];
+        const exists = cart.find(single_product => single_product.id == product.id);
+        if (!exists) {
+            product.quantity = prodcutQuantity;;
             newCart = [...cart, product];
-        }else{
-            const rest=cart.filter(single_product=>product.id !== single_product.id);
-            exists.quantity= exists.quantity+1;
+        } else {
+            const rest = cart.filter(single_product => product.id !== single_product.id);
+            // exists.quantity= exists.quantity+1;
+            exists.quantity = prodcutQuantity;
             newCart = [...rest, exists];
         }
 
         setCart(newCart);
-        addToDb(product.id)
+
+        addToDb(product.id, prodcutQuantity);
     }
 
     const handelRemoveProduct = (product) => {
@@ -56,7 +63,7 @@ const Products = () => {
     };
 
 
- const handelClearCart=()=>{
+    const handelClearCart = () => {
         setCart([]);
         deleteShoppingCart();
         toast.info("Cart Has been Cleared")
