@@ -1,7 +1,29 @@
-.cart-container{
+.cart-container {
     position: absolute;
     width: 30%;
     top: 72px;
     right: 0;
-    background: white;
+    min-height:100%;
+    background: #E9D5CA;
+}
+
+.cart {
+    position: sticky;
+    height: 100vh;
+    top: 0;
+    padding: 30px 20px;
+}
+
+
+@media only screen and (max-width:576px) {
+    .cart-container{
+        width: 50%;
+    }
+
+}
+
+@media only screen and (min-width:577px) and (max-width:992px) {
+    .cart-container {
+        width: 40%;
+    }
 }
