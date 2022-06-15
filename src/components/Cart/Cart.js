@@ -1,16 +1,41 @@
-import React from 'react';
+import { faCircleXmark, faClose } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useContext } from 'react';
+import { CartContext } from '../../App';
 import './Cart.css';
 
-const Cart = () => {
+const Cart = (props) => {
+    const [text, setTest] = useContext(CartContext);
+    const {cart}=props;
+
+    let total=0;
+    let shipping_charge_per_product=5;
+    let total_Shipping=0;
+    for(const product of cart){
+        total=total+product.price;
+        total_Shipping=total_Shipping+shipping_charge_per_product;
+    }
+    const grandTotal=total+total_Shipping;
+
     return (
         <div className='cart-container'>
             <div className='cart'>
-                <h2>this is cart</h2>
-                <div>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non molestiae ducimus quisquam adipisci illo tenetur rem, quae distinctio reprehenderit earum omnis cupiditate consequuntur ullam natus velit voluptatibus dignissimos soluta. Asperiores voluptate dolores consequatur eos beatae? Accusantium itaque repudiandae sed! Provident atque consectetur dignissimos natus debitis fuga velit iste officia maiores aut! Facere necessitatibus nostrum neque nesciunt laborum nobis laboriosam placeat eveniet culpa porro illo nam odit illum corporis fuga vero, consequuntur quod reiciendis eligendi perferendis temporibus dignissimos distinctio. Perspiciatis molestias expedita magnam! Fugit qui praesentium dolores reprehenderit maxime numquam nobis iste quaerat voluptatibus autem cupiditate, harum adipisci a modi debitis temporibus molestiae perspiciatis quis dicta. Obcaecati officiis est molestiae. Earum explicabo inventore rerum nihil aliquid delectus cumque, obcaecati eaque est ipsam quam ad quaerat repellat, reprehenderit consequuntur nesciunt quidem sunt necessitatibus corrupti similique perferendis! Earum porro quam praesentium molestiae nam, sint doloribus ipsum dolor omnis eius, ab voluptate neque sapiente necessitatibus sunt illo eos voluptas itaque in accusamus laudantium voluptatem. Autem similique ex incidunt distinctio dolores quasi? Itaque molestiae voluptate consequuntur repellendus assumenda repellat quam quo atque ut, minima animi exercitationem eos vitae pariatur ratione dolor aliquam ipsum at perferendis possimus harum corporis esse illo. Soluta autem tenetur consequatur ratione!
-                    </p>
+                <div className='cart-header'>
+                    <h2>Cart</h2>
+                    <FontAwesomeIcon onClick={() => setTest(!text)} icon={faCircleXmark}></FontAwesomeIcon>
                 </div>
-
+                <hr />
+                <h3>Your Items {cart.length}</h3>
+                <div>
+                    <p>product will show up here</p>
+                </div>
+                <hr />
+                <div>
+                    <h3>Sub-total=${total.toFixed(2)}</h3>
+                    <h3>Delivary Charge=+${total_Shipping.toFixed(2)}</h3>
+                </div>
+                <hr />
+                <h3>Grand Total=${grandTotal.toFixed(2)}</h3>
             </div>
         </div>
     );

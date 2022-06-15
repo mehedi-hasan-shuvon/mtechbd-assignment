@@ -16,9 +16,6 @@ function App() {
       <div className="App">
         <Header></Header>
         <Products></Products>
-        {
-          text && <Cart></Cart>
-        }
       </div>
     </CartContext.Provider>
 
