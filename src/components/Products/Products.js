@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../App';
-import { addToDb } from '../../CustomHooks/fakedb';
+import { addToDb, getStoredCart } from '../../CustomHooks/fakedb';
 import useProducts from '../../CustomHooks/useProducts';
 import Cart from '../Cart/Cart';
 import SingleProduct from '../SingleProduct/SingleProduct';
@@ -11,15 +11,42 @@ const Products = () => {
     const [text, setTest] = useContext(CartContext);
 
 
+    useEffect(() => {
+        const storedCart = getStoredCart();
+        // console.log(storedCart);
+        const savedCart=[]
+        for (const id in storedCart) {
+            const addedProduct = products.find(product => product.id == id);
+            if (addedProduct) {
+                            console.log(addedProduct);
+                            const quantity = storedCart[id];
+                            addedProduct.quantity = quantity;
+                            savedCart.push(addedProduct);
+                        }
+        }
+        setCart(savedCart)
+    }, [products]);
+
+
     const handelAddToCart = (product) => {
         // console.log("add to cart cliecked", product);
-        const newCart = [...cart, product];
+        let newCart=[];
+        const exists=cart.find(single_product=>single_product.id == product.id);
+        if(!exists){
+            product.quantity=1;
+            newCart = [...cart, product];
+        }else{
+            const rest=cart.filter(single_product=>product.id !== single_product.id);
+            exists.quantity= exists.quantity+1;
+            newCart = [...rest, exists];
+        }
+
         setCart(newCart);
         addToDb(product.id)
     }
 
 
-
+    console.log(cart);
 
     return (
         <div className='products-container'>

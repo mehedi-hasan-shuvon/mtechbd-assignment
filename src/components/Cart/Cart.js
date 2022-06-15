@@ -6,16 +6,21 @@ import './Cart.css';
 
 const Cart = (props) => {
     const [text, setTest] = useContext(CartContext);
-    const {cart}=props;
+    const { cart } = props;
 
-    let total=0;
-    let shipping_charge_per_product=5;
-    let total_Shipping=0;
-    for(const product of cart){
-        total=total+product.price;
-        total_Shipping=total_Shipping+shipping_charge_per_product;
+    let total = 0;
+    let shipping_charge_per_product = 5;
+    let total_Shipping = 0;
+    let quantity = 0;
+    for (const product of cart) {
+        quantity = quantity + product.quantity;
+        total = total + product.price*product.quantity;
+        total_Shipping = total_Shipping + shipping_charge_per_product;
     }
-    const grandTotal=total+total_Shipping;
+    const grandTotal = total + total_Shipping;
+
+
+
 
     return (
         <div className='cart-container'>
@@ -25,7 +30,7 @@ const Cart = (props) => {
                     <FontAwesomeIcon onClick={() => setTest(!text)} icon={faCircleXmark}></FontAwesomeIcon>
                 </div>
                 <hr />
-                <h3>Your Items {cart.length}</h3>
+                <h3>Your Items {cart.length} and quantity {quantity}</h3>
                 <div>
                     <p>product will show up here</p>
                 </div>
