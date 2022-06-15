@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { CartContext } from '../../App';
+import { CartContext, CartLengthContext } from '../../App';
 import { addToDb, getStoredCart } from '../../CustomHooks/fakedb';
 import useProducts from '../../CustomHooks/useProducts';
 import Cart from '../Cart/Cart';
@@ -9,7 +9,8 @@ const Products = () => {
     const [products, setProducts] = useProducts();
     const [cart, setCart] = useState([]);
     const [text, setTest] = useContext(CartContext);
-
+    const [length,SetLength] = useContext(CartLengthContext);
+    SetLength(cart.length);
 
     useEffect(() => {
         const storedCart = getStoredCart();
@@ -18,7 +19,7 @@ const Products = () => {
         for (const id in storedCart) {
             const addedProduct = products.find(product => product.id == id);
             if (addedProduct) {
-                            console.log(addedProduct);
+                            
                             const quantity = storedCart[id];
                             addedProduct.quantity = quantity;
                             savedCart.push(addedProduct);
@@ -46,7 +47,7 @@ const Products = () => {
     }
 
 
-    console.log(cart);
+    // console.log(cart);
 
     return (
         <div className='products-container'>

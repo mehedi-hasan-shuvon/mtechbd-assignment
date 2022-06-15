@@ -3,17 +3,18 @@ import './Header.css';
 import logo from '../../assets/logov1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { CartContext } from '../../App';
+import { CartContext, CartLengthContext } from '../../App';
 import { getStoredCart } from '../../CustomHooks/fakedb';
+import useProducts from '../../CustomHooks/useProducts';
+import useCart from '../../CustomHooks/useCart';
 
 
 const Header = () => {
     const [text, setTest] = useContext(CartContext);
+    const [length,SetLength] = useContext(CartLengthContext);
+    const [products, setProducts] = useProducts();
+    const [cart, SetCart] = useCart(products);
     let item_number = 0;
-    useEffect(() => {
-        const storedCart = getStoredCart();
-        item_number = Object.keys(storedCart).length;
-    }, []);
 
     return (
         <nav className='header'>
@@ -22,7 +23,7 @@ const Header = () => {
 
                 <div className='cart-logo-div' onClick={() => setTest(!text)}>
                     <FontAwesomeIcon className='cart-logo' icon={faCartShopping}></FontAwesomeIcon>
-                    <div className='badge'>item: {item_number}</div>
+                    <div className='badge'>{length}</div>
                 </div>
 
             </div>

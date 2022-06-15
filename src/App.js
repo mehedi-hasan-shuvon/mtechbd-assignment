@@ -7,16 +7,21 @@ import { createContext, useState } from 'react';
 
 
 export const CartContext = createContext(false);
+export const CartLengthContext = createContext(0)
 
 function App() {
   const [text, setTest] = useState(false);
+  const [length,SetLength]=useState(0);
 
   return (
     <CartContext.Provider value={[text, setTest]}>
-      <div className="App">
-        <Header></Header>
-        <Products></Products>
-      </div>
+      <CartLengthContext.Provider value={[length,SetLength]}>
+        <div className="App">
+          <Header></Header>
+          <Products></Products>
+        </div>
+      </CartLengthContext.Provider>
+
     </CartContext.Provider>
 
   );

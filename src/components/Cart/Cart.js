@@ -1,11 +1,14 @@
 import { faCircleXmark, faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext } from 'react';
-import { CartContext } from '../../App';
+import { CartContext, CartLengthContext } from '../../App';
+import CartItems from '../CartItems/CartItems';
+import SingleCartItem from '../SingleCartItem/SingleCartItem';
 import './Cart.css';
 
 const Cart = (props) => {
     const [text, setTest] = useContext(CartContext);
+
     const { cart } = props;
 
     let total = 0;
@@ -14,11 +17,10 @@ const Cart = (props) => {
     let quantity = 0;
     for (const product of cart) {
         quantity = quantity + product.quantity;
-        total = total + product.price*product.quantity;
+        total = total + product.price * product.quantity;
         total_Shipping = total_Shipping + shipping_charge_per_product;
     }
     const grandTotal = total + total_Shipping;
-
 
 
 
@@ -33,6 +35,10 @@ const Cart = (props) => {
                 <h3>Your Items {cart.length} and quantity {quantity}</h3>
                 <div>
                     <p>product will show up here</p>
+                    {
+                        cart.map(product => <SingleCartItem key={product.id}
+                            product={product}></SingleCartItem>)
+                    }
                 </div>
                 <hr />
                 <div>
