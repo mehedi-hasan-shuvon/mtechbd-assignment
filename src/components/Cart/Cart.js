@@ -10,20 +10,22 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Cart.css';
 import { deleteShoppingCart } from '../../CustomHooks/fakedb';
+import Modal from '../Modal/Modal';
 
 const Cart = (props) => {
     const [text, setTest] = useContext(CartContext);
 
     const { cart, handelRemoveProduct, handelClearCart, handelAddToCart } = props;
 
-    const handelCheckout = () => {
-        if(cart.length==0){
-            toast.error("Cart is Empty");
-        }else{
-            toast.success("Cart Items has been ordered to Checkout");
-        }
+    // const handelCheckout = () => {
+    //     if(cart.length==0){
+    //         toast.error("Cart is Empty");
+    //     }else{
+    //         toast.success("Cart Items has been ordered to Checkout");
+            
+    //     }
         
-    }
+    // }
 
 
 
@@ -65,12 +67,14 @@ const Cart = (props) => {
                 </div>
                 <hr />
                 <h3 className='Grand-total-text'>Grand Total=${grandTotal.toFixed(2)}</h3>
-                <div onClick={handelCheckout} className='proceed-div'>
-                    <button className='proceed-btn'>Proceed to Checkout</button>
+                <div  className='proceed-div'>
+                    {/* <button className='proceed-btn'>Proceed to Checkout</button> */}
+                    <Modal cart={cart} className='proceed-btn'></Modal>
                 </div>
                 <div onClick={handelClearCart} className='clear-div'>
                     <button className='clear-btn'>Clear Cart</button>
                 </div>
+                
             </div>
             <ToastContainer />
         </div>
