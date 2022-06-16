@@ -85,7 +85,8 @@ const Products = () => {
                 }
             </div>
             {
-                text && <Cart cart={cart} handelRemoveProduct={handelRemoveProduct} handelClearCart={handelClearCart}></Cart>
+                text && <Cart cart={cart} handelRemoveProduct={handelRemoveProduct} handelClearCart={handelClearCart}
+                    handelAddToCart={handelAddToCart}></Cart>
             }
         </div>
     );

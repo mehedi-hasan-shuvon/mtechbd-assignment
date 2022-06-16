@@ -24,8 +24,6 @@ const SingleProduct = (props) => {
     }
 
 
-
-
     return (
         <div className='product'>
             <img className='product-image' src={image} alt="" />

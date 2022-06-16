@@ -14,14 +14,14 @@ import { deleteShoppingCart } from '../../CustomHooks/fakedb';
 const Cart = (props) => {
     const [text, setTest] = useContext(CartContext);
 
-    const { cart,handelRemoveProduct,handelClearCart} = props;
+    const { cart, handelRemoveProduct, handelClearCart, handelAddToCart } = props;
 
-    const handelCheckout=()=>{
+    const handelCheckout = () => {
         toast.success("Cart Items has been ordered to Checkout");
     }
 
-   
-    
+
+
 
     let total = 0;
     let shipping_charge_per_product = 5;
@@ -49,7 +49,8 @@ const Cart = (props) => {
                     {
                         cart.map(product => <SingleCartItem key={product.id}
                             product={product}
-                            handelRemoveProduct={handelRemoveProduct}></SingleCartItem>)
+                            handelRemoveProduct={handelRemoveProduct}
+                            handelAddToCart={handelAddToCart}></SingleCartItem>)
                     }
                 </div>
                 <hr />
