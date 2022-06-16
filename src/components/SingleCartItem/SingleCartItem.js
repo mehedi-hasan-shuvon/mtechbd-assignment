@@ -38,9 +38,9 @@ const SingleCartItem = (props) => {
             <img className='cart-item-img' src={image} alt="" />
             <div className='cart-single-item-details'>
                 <p className='cart-item-title' title={title}>{title}</p>
-                <p className='cart-item-price'> price: ${price}(per piece) X Quantity: {quantity}</p>
-                <p>Total:$ {itemSubToatalPrice.toFixed(2)}</p>
-                <div className='plus-minus-container'>
+                <p className='cart-item-price'><span className='price-span'>price: ${price} </span> <span className='piece-span'>(per piece)</span> <span>&#215;</span> <span className='quantity-span'>Quantity: {quantity}</span> </p>
+                <p className='item-total-span'>Total: ${itemSubToatalPrice.toFixed(2)}</p>
+                <div className='plus-minus-container cart-plus-minus-container'>
                     <div className='quantity-txt cart-quantity-text'>{prodcutQuantity}</div>
                     <div>
                         <button type='button' onClick={handelIncrement} className='plus-btn cart-plus-btn'>+</button>

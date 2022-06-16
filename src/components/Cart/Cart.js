@@ -17,7 +17,12 @@ const Cart = (props) => {
     const { cart, handelRemoveProduct, handelClearCart, handelAddToCart } = props;
 
     const handelCheckout = () => {
-        toast.success("Cart Items has been ordered to Checkout");
+        if(cart.length==0){
+            toast.error("Cart is Empty");
+        }else{
+            toast.success("Cart Items has been ordered to Checkout");
+        }
+        
     }
 
 
@@ -55,11 +60,11 @@ const Cart = (props) => {
                 </div>
                 <hr />
                 <div>
-                    <h3>Sub-total=${total.toFixed(2)}</h3>
-                    <h3>Delivary Charge=+${total_Shipping.toFixed(2)}</h3>
+                    <h3 className='common-text'>Sub-total=${total.toFixed(2)}</h3>
+                    <h3 className='common-text'>Delivary Charge=+${total_Shipping.toFixed(2)}</h3>
                 </div>
                 <hr />
-                <h3>Grand Total=${grandTotal.toFixed(2)}</h3>
+                <h3 className='Grand-total-text'>Grand Total=${grandTotal.toFixed(2)}</h3>
                 <div onClick={handelCheckout} className='proceed-div'>
                     <button className='proceed-btn'>Proceed to Checkout</button>
                 </div>

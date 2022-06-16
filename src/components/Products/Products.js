@@ -69,9 +69,14 @@ const Products = () => {
 
 
     const handelClearCart = () => {
-        setCart([]);
-        deleteShoppingCart();
-        toast.info("Cart Has been Cleared")
+        if(cart.length==0){
+            toast.error("Cart is already Empty")
+        }else{
+            setCart([]);
+            deleteShoppingCart();
+            toast.info("Cart Has been Cleared")
+        }
+      
     }
 
 

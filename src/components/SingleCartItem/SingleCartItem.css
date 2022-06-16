@@ -32,6 +32,8 @@
     max-width: 250px;
     font-size: 13px;
     margin: 0px;
+    color: darkgray;
+    font-weight: 700;
 }
 
 .delete-icon {
@@ -45,6 +47,7 @@
 
 .cart-single-item-details {
     padding-left: 5px;
+    margin-left: 10px;
 
 }
 
@@ -66,6 +69,10 @@
     cursor: pointer;
 }
 
+.cart-plus-minus-container {
+    margin-left: 0px !important
+}
+
 .cart-quantity-text {
     display: flex;
     justify-content: center;
@@ -75,13 +82,12 @@
     background-color: #DFDFDE;
 }
 
-.cart-plus-btn{
+
+.cart-plus-btn {
     border-radius: 0px 5px 0px 0px;
 }
 
-.cart-minus-btn{
-
-}
+.cart-minus-btn {}
 
 .cart-update-btn {
     background-color: #FFE0B3;
@@ -92,6 +98,26 @@
 
 .cart-update-btn:hover {
     background-color: orange;
+}
+
+.price-span {
+    font-weight: 700;
+    color: cadetblue;
+}
+
+.quantity-span {
+    font-weight: 700;
+    color: cadetblue;
+}
+
+.item-total-span {
+    font-weight: 700;
+    color: cadetblue;
+}
+
+.piece-span{
+    color: darkgray;
+    font-weight: 500;
 }
 
 @media only screen and (max-width:576px) {
