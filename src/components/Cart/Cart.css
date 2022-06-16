@@ -9,7 +9,7 @@
 
 .cart {
     position: sticky;
-    height: 100vh;
+    /* height: 100vh; */
     top: 0;
     padding: 10px 20px;
 }

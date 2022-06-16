@@ -7,6 +7,7 @@ import SingleProduct from '../SingleProduct/SingleProduct';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Products.css'
+import Loading from '../Loading/Loading';
 const Products = () => {
     const [products, setProducts] = useProducts();
     const [cart, setCart] = useState([]);
@@ -14,7 +15,7 @@ const Products = () => {
     const [length, SetLength] = useContext(CartLengthContext);
 
 
-    //for increament and decrement
+    
 
 
     SetLength(cart.length);
@@ -35,7 +36,11 @@ const Products = () => {
         setCart(savedCart)
     }, [products]);
 
+    if (products.length == 0) {
+        return <Loading></Loading>;
+    };
 
+    
     const handelAddToCart = (product, prodcutQuantity) => {
         // console.log("add to cart cliecked", product);
         let newCart = [];

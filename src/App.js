@@ -7,6 +7,7 @@ import { createContext, useState } from 'react';
 
 
 
+
 export const CartContext = createContext(false);
 export const CartLengthContext = createContext(0)
 
@@ -20,6 +21,7 @@ function App() {
         <div className="App">
           <Header></Header>
           <Products></Products>
+
         </div>
       </CartLengthContext.Provider>
 

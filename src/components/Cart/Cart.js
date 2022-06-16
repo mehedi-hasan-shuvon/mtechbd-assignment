@@ -44,7 +44,7 @@ const Cart = (props) => {
                     <FontAwesomeIcon onClick={() => setTest(!text)} icon={faCircleXmark}></FontAwesomeIcon>
                 </div>
                 <hr />
-                <h3>Your Items {cart.length} and quantity {quantity}</h3>
+                <h3>You have {cart.length} Items and {quantity} Total Quantities </h3>
                 <div className='single-cart-product-container'>
                     {
                         cart.map(product => <SingleCartItem key={product.id}
