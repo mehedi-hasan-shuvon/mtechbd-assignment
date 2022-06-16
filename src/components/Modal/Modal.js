@@ -44,6 +44,7 @@ const Modal = ({ cart }) => {
                                 <input
                                     placeholder="Name"
                                     id='name'
+                                    required
                                 />
                             </div>
 
@@ -52,6 +53,7 @@ const Modal = ({ cart }) => {
                                 <input
                                     placeholder="Email"
                                     id='email'
+                                    required
                                 />
                             </div>
                             <div className='address-input'>
@@ -59,6 +61,7 @@ const Modal = ({ cart }) => {
                                 <textarea
                                     placeholder="street/city/country"
                                     id='address'
+                                    required
                                 ></textarea>
                             </div>
 
@@ -66,6 +69,7 @@ const Modal = ({ cart }) => {
                                 <label>Number: </label>
                                 <input
                                     placeholder="Phone Number"
+                                    required
                                 />
                             </div>
 
